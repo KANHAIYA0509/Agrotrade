@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Comfortaa:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/slider.css" />
+  </head>
+  <body>
+    <div class="main-slider swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div
+            class="slide-image"
+            style="background-image: url('SLimages/slide02.jpg')"
+          ></div>
+          <div class="slide-inner">
+            <h1>What’s Things in Season?</h1>
+            <p>Growing and Harvesting Naturally</p>
+            <a href="#">Shop Now</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div
+            class="slide-image"
+            style="background-image: url('SLimages/nature.jpg')"
+          ></div>
+          <div class="slide-inner">
+            <h1>What’s Things in Season?</h1>
+            <p>Growing and Harvesting Naturally</p>
+            <a href="#">Shop Now</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div
+            class="slide-image"
+            style="background-image: url('SLimages/slide03.jpg')"
+          ></div>
+          <div class="slide-inner">
+            <h1>What’s Things in Season?</h1>
+            <p>Growing and Harvesting Naturally</p>
+            <a href="#">Shop Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Navigation -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".main-slider", {
+          // Enable looping
+          loop: true,
+
+          // Set transition speed (in milliseconds)
+          speed: 1000, // Adjust this value for smoother transitions
+
+          // Enable autoplay with a delay
+          autoplay: {
+            delay: 3500, // 3.5 seconds between slides
+            disableOnInteraction: false, // Allow user interaction to stop autoplay
+          },
+
+          // Set the transition effect
+          effect: "slide", // Use 'slide' for a classic sliding effect
+
+          // Add easing for smoother transitions
+          easing: "cubic-bezier(0.4, 0, 0.2, 1)", // Smooth easing function
+
+          // Preload images to avoid layout shifts
+          preloadImages: true,
+          updateOnImagesReady: true,
+
+          // Pagination
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+
+          // Navigation arrows
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+nav {
+  width: 1300px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between; /* Changed from space-around to space-between */
+  align-items: center; /* Vertically center all items in the nav */
+  flex-wrap: wrap;
+  color: #fff;
+  background-size: cover; 
+  background-color: rgb(47, 132, 59); 
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  padding: 30px 0; /* Adjust padding as needed */
+  transform: translateX(-50%);
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.right {
+  flex-grow: 1; /* Ensure the right div takes up the remaining space */
+  display: flex;
+  justify-content: flex-end; /* Align the ul to the right */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center; /* Vertically center all list items */
+  height: 100%; /* Ensure the ul takes full height of the nav */
+}
+
+nav ul li {
+  display: flex;
+  align-items: center; /* Vertically center each list item */
+}
+
+nav ul li a {
+  margin: 0 23px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  display: flex;
+  align-items: center; /* Vertically center text and icons */
+  position : relative;
+}
+
+nav ul li a:hover {
+  color: #fbff00;
+}
+
+nav ul li a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Adjust this value to control the distance of the underline from the text */
+  width: 100%;
+  height: 3px; /* Thickness of the underline */
+  background-color: #fbff00; /* Yellow color for the underline */
+}
+
+nav:before {
+  content: "";
+  width: calc(100% - 40px);
+  height: 8px;
+  background: #000000;
+  position: absolute;
+  left: 20px;
+  bottom: -8px;
+  opacity: 0.2;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.sign-up li a:hover {
+  color: #8c5c26;
+}
+
+.left {
+  font-size: 2rem;
+  display: flex;
+  align-items: center; /* Vertically center the logo */
+  margin-right: auto; /* Push the logo slightly to the left */
+  padding-left: 30px; /* Add some padding to the left of the logo */
+}
+
+.logo {
+  width: 150px;
+  height: 80px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+
+nav {
+  width: 1300px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between; /* Align items with space between */
+  align-items: center; /* Vertically center all items */
+  flex-wrap: wrap;
+  color: #fff;
+  background-size: cover;
+  background-color: rgb(47, 132, 59);
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  padding: 30px 20px; /* Add horizontal padding */
+  transform: translateX(-50%);
+  border-radius: 4px;
+  z-index: 3;
+}
+
+.left {
+  font-size: 2rem;
+  display: flex;
+  align-items: center; /* Vertically center the logo */
+}
+
+.logo {
+  width: 150px;
+  height: 80px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Allow the search bar to take up available space */
+  margin: 0 20px; /* Add spacing between logo and search bar */
+  
+}
+

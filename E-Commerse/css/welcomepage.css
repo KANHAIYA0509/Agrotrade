@@ -1,0 +1,92 @@
+* {
+    font-family: 'Nunito', sans-serif; /* Round-shaped font */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+.hero {
+    background-color: #ffffff;
+    padding: 50px 0;
+}
+
+.hero .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    width: 50%;
+}
+
+.welcome {
+    text-align: center;
+    margin-top: 20px;
+    color: brown;
+    font-weight: 700; /* Bold heading */
+}
+
+h3 {
+    text-align: center;
+    margin-top: 20px;
+    color: rgb(9, 111, 52);
+    font-weight: 700; /* Bold heading */
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 700; /* Bold heading */
+}
+
+.hero-content p {
+    line-height: 1.8; /* Increased line height for better readability */
+    margin-bottom: 30px;
+    font-size: 1.1em; /* Slightly larger font size */
+    color: #555; /* Lighter text color */
+    text-align: justify; /* Justify text for a cleaner look */
+}
+
+.hero-content .btn {
+    display: inline-block;
+    background-color: #ffc107; /* Yellow button */
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.hero-image {
+    width: 40%;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+}
+
+.results {
+    background-color: #f8f8f8;
+    padding: 30px 0;
+    text-align: center;
+}

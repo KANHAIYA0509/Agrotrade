@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Log In</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('agriculture-background.jpg'); /* Change 'agriculture-background.jpg' to your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center items horizontally */
+            min-height: 100vh;
+        }
+
+        .header_section, .footer_section {
+            width: 100%; /* Ensure header and footer span the full width */
+            text-align: center; /* Center text inside header and footer */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            margin-top: 200px; /* Add margin to separate from header and footer */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #login-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header_section" id="5"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+      load("header.html");
+      function load(url) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
+        document.getElementById(5).innerHTML = req.responseText;
+      }
+    </script>
+    <!-- Header Section Ended -->
+
+    <!-- Sign Up / Log In Container -->
+    <div class="container" id="signup-container">
+        <h1>Sign Up</h1>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="signupFirstName">First Name:</label>
+                <input type="text" id="signupFirstName" name="signupFirstName" placeholder="Enter your first name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signupLastName">Last Name:</label>
+                <input type="text" id="signupLastName" name="signupLastName" placeholder="Enter your last name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" name="signupEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" name="signupPassword" placeholder="Enter your password" required maxlength="10">
+            </div>
+
+            <div class="form-group">
+                <label for="signupConfirmPassword">Confirm Password:</label>
+                <input type="password" id="signupConfirmPassword" name="signupConfirmPassword" placeholder="Confirm your password" required maxlength="10">
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+
+            <div class="form-group">
+                <p>Already have an account? <a href="#" id="show-login">Log in</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="login-container">
+        <h1>Log In</h1>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" name="loginEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Password (max 10 characters):</label>
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required maxlength="10">
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Log In</button>
+            </div>
+
+            <div class="form-group">
+                <p>Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+    <!-- Sign Up / Log In Container Ended -->
+
+    <!-- Footer Section -->
+    <div class="footer_section" id="4"></div>
+    <script>
+      load("footer.html");
+      function load(url) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
+        document.getElementById(4).innerHTML = req.responseText;
+      }
+    </script>
+    <!-- Footer Section Ended -->
+
+    <script>
+        document.getElementById('show-login').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('signup-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        });
+
+        document.getElementById('show-signup').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('signup-container').style.display = 'block';
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                event.preventDefault();
+                return;
+            }
+            document.getElementById('signup-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+            event.preventDefault(); // Prevent the form from actually submitting (for demo purposes)
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('loginPassword').value;
+
+            if (password.length > 10) {
+                alert("Password cannot exceed 10 characters.");
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

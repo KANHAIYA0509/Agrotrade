@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>Contact Us</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .container {
+        width: 80%;
+        margin-top: 200px;
+        overflow: hidden;
+      }
+      header {
+        background: rgb(255, 255, 255);
+        color: #ffff;
+        padding: 20px;
+        text-align: center;
+      }
+      .contact-section {
+        background: #fff;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        background: #333;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      button:hover {
+        background: #555;
+      }
+      .contact-info {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  header section -->
+    <div class="header_section" id="5"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+      load("header.html");
+      function load(url) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
+        document.getElementById(5).innerHTML = req.responseText;
+      }
+    </script>
+    <!--  header section ended -->
+
+    <div class="container">
+      <h1>Contact Us</h1>
+
+      <section class="contact-section">
+        <h2>Get in Touch</h2>
+        <p>We'd love to hear from you! Fill out the form below to reach us.</p>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+
+      <section class="contact-section contact-info">
+        <h2>Contact Information</h2>
+        <div class="contact-info">
+          <a href="tel:+000123456"
+            ><span class="icon">📞</span>Phone: (000) 123-456</a
+          ><br>
+          <a href="mailto:ps4318258.ac.in"
+            ><span class="email"><i class="bi bi-envelope-paper-fill"></i></span> Email: pylsxna808@gmail.com</a
+          >
+        </div>
+      </section>
+    </div>
+    <!--  footer section -->
+    <div class="footer_section" id="4"></div>
+    <script>
+      load("footer.html");
+      function load(url) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
+        document.getElementById(4).innerHTML = req.responseText;
+      }
+    </script>
+    <!--  footer section ended-->
+  </body>
+</html>

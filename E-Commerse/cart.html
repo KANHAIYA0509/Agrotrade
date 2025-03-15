@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: rgb(235, 222, 222);
+        color: black;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+        width: 400px;
+        margin-top: 200px; /* Add margin to separate from header and footer */
+    }
+
+
+      .cart-item {
+        background-color: white;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+      }
+
+      .cart-item img {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        margin-right: 15px;
+      }
+
+      .cart-item-details {
+        flex: 1;
+      }
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .quantity-controls button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .remove-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .btn btn-success-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn btn-success-btn:hover {
+        background-color: #218838;
+      }
+  
+    </style>
+  </head>
+  <body>
+
+    <!--  header section -->
+    <div class="header_section" id="5"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+      load("header.html");
+      function load(url) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
+        document.getElementById(5).innerHTML = req.responseText;
+      }
+    </script>
+    <!--  header section ended -->
+
+
+    <div class="container">
+      <h1 style = "text-align: center;" "font-weight: 700;">Your Cart</h1>
+      <div id="cart-items"></div>
+
+      <!-- Button container for Continue Shopping and Checkout -->
+      <div class="button-container">
+        <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+        <a href="checkout.html" class="btn btn-success">Checkout</a>
+      </div>
+    </div>
+
+    
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cartItemsContainer = document.getElementById("cart-items");
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Function to render cart items
+        function renderCart() {
+          cartItemsContainer.innerHTML = ""; // Clear the container
+
+          if (cart.length === 0) {
+            cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+          } else {
+            cart.forEach((item, index) => {
+              const itemElement = document.createElement("div");
+              itemElement.className = "cart-item";
+
+              // Add product image, name, price, and quantity controls
+              itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" />
+                <div class="cart-item-details">
+                  <h3>${item.name}</h3>
+                  <p>Price: ₹${item.price}</p>
+                  <div class="quantity-controls">
+                    <button class="decrease-quantity" data-index="${index}">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="increase-quantity" data-index="${index}">+</button>
+                  </div>
+                </div>
+                <button class="remove-btn" data-index="${index}">Remove</button>
+              `;
+              cartItemsContainer.appendChild(itemElement);
+            });
+          }
+        }
+
+        // Function to increase quantity
+        function increaseQuantity(index) {
+          cart[index].quantity += 1;
+          localStorage.setItem("cart", JSON.stringify(cart));
+          renderCart();
+        }
+
+        // Function to decrease quantity
+        function decreaseQuantity(index) {
+          if (cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+          } else {
+            // If quantity is 1, remove the item from the cart
+            cart.splice(index, 1);
+          }
+          localStorage.setItem("cart", JSON.stringify(cart));
+          renderCart();
+        }
+
+        // Function to remove an item from the cart
+        function removeItem(index) {
+          cart.splice(index, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          renderCart();
+        }
+
+        // Render the cart initially
+        renderCart();
+
+        // Add event listeners to quantity controls and remove buttons
+        cartItemsContainer.addEventListener("click", function (event) {
+          if (event.target.classList.contains("increase-quantity")) {
+            const index = event.target.getAttribute("data-index");
+            increaseQuantity(index);
+          } else if (event.target.classList.contains("decrease-quantity")) {
+            const index = event.target.getAttribute("data-index");
+            decreaseQuantity(index);
+          } else if (event.target.classList.contains("remove-btn")) {
+            const index = event.target.getAttribute("data-index");
+            removeItem(index);
+          }
+        });
+
+        // Add event listener for the Checkout button
+        const checkoutBtn = document.querySelector(".checkout-btn");
+        checkoutBtn.addEventListener("click", function () {
+          alert("Proceeding to checkout..."); // Replace with your checkout logic
+        });
+      });
+    </script>
+  </body>
+</html>
